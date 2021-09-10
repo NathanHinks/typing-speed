@@ -1,0 +1,86 @@
+{
+    "workbench.colorTheme": "GitHub Dark Default",
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "yaml.schemas": {
+        "file:///Users/nathan.hinks/.vscode/extensions/atlassian.atlascode-2.9.1/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "prettier.printWidth": 80,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "explorer.compactFolders": false,
+    "editor.wordWrap": "on",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": false,
+        "source.fixAll.eslint": true
+    },
+    "auto-close-tag.activationOnLanguage": [
+        "xml",
+        "php",
+        "blade",
+        "ejs",
+        "jinja",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "plaintext",
+        "markdown",
+        "vue",
+        "liquid",
+        "erb",
+        "lang-cfml",
+        "cfml",
+        "HTML (EEx)",
+        "HTML (Eex)",
+        "plist"
+    ],
+    "editor.fontLigatures": true,
+    "javascript.format.semicolons": "insert",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace",
+    "html.format.endWithNewline": true,
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.format.semicolons": "insert",
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "eslint.lintTask.enable": true,
+    "javascript.preferences.quoteStyle": "single",
+    "yaml.format.singleQuote": true,
+    "quokka.darkTheme.error.decorationAttachmentRenderOptions": {
+        "border": null,
+        "borderColor": null,
+        "fontStyle": null,
+        "fontWeight": null,
+        "textDecoration": null,
+        "color": "#fe536a",
+        "backgroundColor": null,
+        "margin": "1.2em",
+        "width": null,
+        "height": null
+    },
+    "eslint.format.enable": true,
+    "json.format.enable": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.jsxSingleQuote": true,
+    "prettier.singleQuote": true,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "atlascode.jira.lastCreateSiteAndProject": {
+        "siteId": "",
+        "projectKey": ""
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "prettier.configPath": "./.prettierrc.js",
+    "workbench.iconTheme": "material-icon-theme",
+    "window.zoomLevel": 1,
+    "html.format.extraLiners": "",
+    "editor.formatOnSave": true
+}

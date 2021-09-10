@@ -1,0 +1,83 @@
+{
+    "root": true,
+    "extends": ["prettier"],
+    "rules": {
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-one-expression-per-line": "off", // The auto-fix for this rule can remove whitespace from rendered output
+        "react/jsx-curly-newline": "off", // Conflicts with prettier rules
+        "no-underscore-dangle": ["error", { "allow": ["__", "_id"] }] // Allow for ramda gap function and mongo ID
+    },
+    "overrides": [
+        // React files
+        // -------------------
+        {
+            "files": [
+                "modules/**/*.js",
+                "modules/**/*.jsx",
+                "src/**/*.js",
+                "src/**/*.jsx"
+            ],
+            "parser": "babel-eslint",
+            "env": {
+                "browser": true // Enable browser globals for relevant files
+            },
+            "rules": {}
+        },
+        // Server files
+        // -------------------
+        {
+            "files": [
+                "dyson/**/*.js",
+                "postcss.config.js",
+                "server/**/*.js",
+                "test/**/*.js",
+                "vendor.webpack.config.js",
+                "webpack.config.js"
+            ],
+            "parserOptions": {
+                "ecmaVersion": 11
+            },
+            "env": {
+                "node": true // Enable node globals for relevant files
+            },
+            "rules": {
+                "import/no-extraneous-dependencies": [
+                    "error",
+                    {
+                        "devDependencies": [
+                            "postcss.config.js",
+                            "test/**/*.js",
+                            "vendor.webpack.config.js",
+                            "webpack.config.js"
+                        ]
+                    }
+                ] // Don't complain about dev deps in build configs
+            }
+        },
+        // Test files
+        // -------------------
+        {
+            "files": ["*.spec.js", "*.spec.jsx"],
+            "rules": {
+                "react/jsx-props-no-spreading": "off", // No need for test file, it's more readable being able to spread props for tests
+                "no-underscore-dangle": [
+                    "error",
+                    { "allow": ["__", "__ResetDependency__", "__Rewire__"] }
+                ], // Allow for babel-rewire and ramda gap function in test files
+                "import/no-extraneous-dependencies": [
+                    "error",
+                    { "devDependencies": ["**/*.spec.js", "**/*.spec.jsx"] }
+                ], // Don't complain about dev deps in test files
+                "tape/no-ignored-test-files": [
+                    "error",
+                    { "files": ["**/*.spec.js", "**/*.spec.jsx"] }
+                ], // Allow for our style of test filenames
+                "tape/test-ended": "off", // We usually use .plan instead of .end
+                "no-shadow": "off", // To allow for our nested tests,
+                "array-callback-return": "warn", // TODO: fix warnings and remove this rule (don't use .map, use .forEach instead)
+                "tape/use-t": "warn", // TODO: fix warnings and remove this rule
+                "tape/no-identical-title": "warn" // TODO: fix warnings and remove this rule
+            }
+        }
+    ]
+}
