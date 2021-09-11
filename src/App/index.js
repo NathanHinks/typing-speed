@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { useEffect, useReducer } from 'react';
+import { useEffect, useReducer, useRef, useState } from 'react';
 import { initialState, timerReducer } from '../state';
 import {
   DECREMENT_TIMER,
@@ -15,21 +15,34 @@ const App = () => {
   const [state, dispatchTimer] = useReducer(timerReducer, initialState);
   const { isTimerRunning, text, timeRemaining } = state;
 
+  const textInputRef = useRef();
+  const [focusInput, setFocusInput] = useState(false);
+
   const startTimer = () => {
     dispatchTimer(RESET_TIMER);
     dispatchTimer(START_TIMER);
+    setFocusInput(true);
   };
 
-  const setTimer = () =>
+  const setTimer = () => {
     setTimeout(() => {
       dispatchTimer(DECREMENT_TIMER);
     }, 1000);
+  };
 
   const handleChange = ({ target: { value } }) =>
     R.compose(dispatchTimer, R.mergeRight(SET_TEXT))({
       payload: value,
     });
 
+  useEffect(
+    () => {
+      if (focusInput) {
+        textInputRef.current.focus();
+      }
+    },
+    [isTimerRunning]
+  );
   useEffect(
     () =>
       R.ifElse(isGameRunning, setTimer, () => dispatchTimer(STOP_TIMER))(state),
@@ -43,7 +56,7 @@ const App = () => {
         Time Remaining: <span>{timeRemaining}s</span>
       </h2>
       <Box display='flex' flexDirection='column'>
-        <div class='no-bg'>
+        <div className='no-bg'>
           <TextField
             disabled={!isTimerRunning}
             color='secondary'
@@ -60,6 +73,7 @@ const App = () => {
             minRows={4}
             multiline
             placeholder='Press the go button then start typing'
+            inputRef={textInputRef}
             size='medium'
             variant='outlined'
             value={text}
@@ -74,7 +88,7 @@ const App = () => {
           GO
         </Button>
         <Grow in={!isTimerRunning && text !== ''}>
-          <p class='word-count'>Word Count: {calculateWordCount(text)}</p>
+          <p className='word-count'>Word Count: {calculateWordCount(text)}</p>
         </Grow>
       </Box>
     </div>
