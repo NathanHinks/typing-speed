@@ -46,24 +46,32 @@ const App = () => {
         <TextField
           disabled={!isTimerRunning}
           color='secondary'
+          error={R.both(isGameRunning, R.propEq('text', ''))(state)}
           onChange={handleChange}
+          label={
+            isTimerRunning ? (
+              'Type as many words as you can here!'
+            ) : (
+              'Press go to start...'
+            )
+          }
           minRows={4}
           multiline
-          placeholder='Press the start button then begin typing'
+          placeholder='Press the go button then start typing'
           variant='outlined'
           value={text}
         />
         <br />
         <Button
-          color='primary'
+          color='secondary'
           disabled={isTimerRunning}
           onClick={startTimer}
           variant='contained'
         >
           GO
         </Button>
-        <Grow in={!isTimerRunning}>
-          <p>total words: {calculateWordCount(text)} </p>
+        <Grow in={!isTimerRunning && text !== ''}>
+          <p>Word Count: {calculateWordCount(text)}</p>
         </Grow>
       </Box>
     </Box>
