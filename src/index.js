@@ -1,5 +1,5 @@
-import App from './App';
-import { createTheme, ThemeProvider } from '@material-ui/core';
+import App from './components/App';
+import { ThemeProvider } from '@material-ui/core';
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -75,7 +75,7 @@
         "projectKey": ""
     },
     "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "remimarsal.prettier-now"
     },
     "security.workspace.trust.untrustedFiles": "open",
     "prettier.configPath": "./.prettierrc.js",

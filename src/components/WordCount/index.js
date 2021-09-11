@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import { calculateWordCount } from '../utils';
+import { calculateWordCount } from '../../utils';
 import Grow from '@material-ui/core/Grow';
 
 const WordCount = ({ state }) => {
