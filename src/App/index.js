@@ -10,6 +10,7 @@ import {
 } from '../state/actions';
 import { calculateWordCount, isGameRunning } from '../utils';
 import { Box, Button, Grow, TextField } from '@material-ui/core';
+import WordCount from '../WordCount';
 
 const App = () => {
   const [state, dispatchTimer] = useReducer(timerReducer, initialState);
@@ -87,9 +88,7 @@ const App = () => {
         >
           GO
         </Button>
-        <Grow in={!isTimerRunning && text !== ''}>
-          <p className='word-count'>Word Count: {calculateWordCount(text)}</p>
-        </Grow>
+        <WordCount state={state} />
       </Box>
     </div>
   );

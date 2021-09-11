@@ -4,7 +4,8 @@ export const calculateWordCount = R.compose(
   R.length,
   R.reject(R.equals('')),
   R.split(' '),
-  R.trim
+  R.trim,
+  R.prop('text')
 );
 
 export const isGameRunning = R.both(
