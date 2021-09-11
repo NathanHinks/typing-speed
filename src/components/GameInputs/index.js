@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import { Fragment, useEffect, useRef, useState } from 'react';
-import { RESET_TIMER, SET_TEXT, START_TIMER } from '../../state/actions';
+import { RESET_TIMER, SET_TEXT, START_TIMER } from '../../itate/actions';
 import { isGameRunning } from '../../utils';
 
 import Button from '@material-ui/core/Button';
