@@ -1,15 +1,15 @@
 import * as R from 'ramda';
 import { useEffect, useReducer } from 'react';
-import { initialState, timerReducer } from '../State';
+import { initialState, timerReducer } from '../state';
 import {
   DECREMENT_TIMER,
   RESET_TIMER,
   SET_TEXT,
   START_TIMER,
   STOP_TIMER,
-} from '../State/actions';
+} from '../state/actions';
 import { calculateWordCount, isGameRunning } from '../utils';
-import { Box, Button, CardHeader, Grow, TextField } from '@material-ui/core';
+import { Box, Button, Grow, TextField } from '@material-ui/core';
 
 const App = () => {
   const [state, dispatchTimer] = useReducer(timerReducer, initialState);
@@ -37,31 +37,34 @@ const App = () => {
   );
 
   return (
-    <Box maxWidth='500px' mx='auto' py='50px' textAlign='center'>
-      <CardHeader
-        title='Test your typing speed'
-        subheader={`Time Remaining: ${timeRemaining}s`}
-      />
+    <div className='app'>
+      <h1>Test your typing speed</h1>
+      <h2>
+        Time Remaining: <span>{timeRemaining}s</span>
+      </h2>
       <Box display='flex' flexDirection='column'>
-        <TextField
-          disabled={!isTimerRunning}
-          color='secondary'
-          error={R.both(isGameRunning, R.propEq('text', ''))(state)}
-          onChange={handleChange}
-          label={
-            isTimerRunning ? (
-              'Type as many words as you can here!'
-            ) : (
-              'Press go to start...'
-            )
-          }
-          minRows={4}
-          multiline
-          placeholder='Press the go button then start typing'
-          variant='outlined'
-          value={text}
-        />
-        <br />
+        <div class='no-bg'>
+          <TextField
+            disabled={!isTimerRunning}
+            color='secondary'
+            error={R.both(isGameRunning, R.propEq('text', ''))(state)}
+            onChange={handleChange}
+            fullWidth
+            label={
+              isTimerRunning ? (
+                'Type as many words as you can in here!'
+              ) : (
+                'Press the go button to start...'
+              )
+            }
+            minRows={4}
+            multiline
+            placeholder='Press the go button then start typing'
+            size='medium'
+            variant='outlined'
+            value={text}
+          />
+        </div>
         <Button
           color='secondary'
           disabled={isTimerRunning}
@@ -71,10 +74,10 @@ const App = () => {
           GO
         </Button>
         <Grow in={!isTimerRunning && text !== ''}>
-          <p>Word Count: {calculateWordCount(text)}</p>
+          <p class='word-count'>Word Count: {calculateWordCount(text)}</p>
         </Grow>
       </Box>
-    </Box>
+    </div>
   );
 };
 
