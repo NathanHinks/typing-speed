@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import { useEffect, useReducer } from 'react';
-import { initialState, reducer } from '../../itate';
-import { DECREMENT_TIMER, STOP_TIMER } from '../../itate/actions';
+import { initialState, reducer } from '../../state';
+import { DECREMENT_TIMER, STOP_TIMER } from '../../state/actions';
 import { isGameRunning } from '../../utils';
 import Box from '@material-ui/core/Box';
 import WordCount from '../WordCount';
